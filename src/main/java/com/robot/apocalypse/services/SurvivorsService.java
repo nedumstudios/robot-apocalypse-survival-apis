@@ -7,7 +7,9 @@ import com.robot.apocalypse.models.SurvivorsEntity;
 import com.robot.apocalypse.repository.SurvivorRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,6 +74,8 @@ public class SurvivorsService {
 
     public Survivors updateSurvivorsLocation(Long survivorId, Double latitude, Double longitude){
         var survivor = getSurvivor(survivorId);
+        if(survivor == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Survivor not found!.");
+        
         survivor.setLatitude(latitude);
         survivor.setLongitude(longitude);
         return save(survivor);
