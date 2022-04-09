@@ -49,7 +49,7 @@ public class SurvivalController {
     }
 
     @GetMapping("statistics")
-    @Operation(description = "Method to get survivors statistics percentage of non-infected to infected.")
+    @Operation(description = "Method to get survivors statistics percentage of non-infected and infected.")
     public ResponseEntity<SurvivorStats> getSurvivorStatistics(){
         return ResponseEntity.ok(survivorsService.getSurvivorStats());
     }

@@ -59,12 +59,15 @@ public class SurvivorsService {
     }
 
     public SurvivorStats getSurvivorStats(){
-        Long totalCount = repository.count();
+        long totalCount = repository.count();
         Long infectedCount = repository.countAllByInfectedIsTrue();
-        Long nonInfected = totalCount - infectedCount;
+        long nonInfectedCount = totalCount - infectedCount;
 
-        Double infectPercentage = (infectedCount/totalCount) * 100;
         SurvivorStats stats = new SurvivorStats();
+        stats.setInfected((infectedCount.doubleValue()/totalCount) * 100);
+        stats.setNonInfected(((double) nonInfectedCount /totalCount) * 100);
+
+        return stats;
     }
 
     public Survivors updateSurvivorsLocation(Long survivorId, Double latitude, Double longitude){
