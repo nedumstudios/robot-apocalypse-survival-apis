@@ -26,7 +26,7 @@ public class WitnessService {
 
     @Scheduled(cron  = "* * * * * *")
     public void checkAndUpdateInfected(){
-        var infectedNotProcessed = repository.findAllByStatusIsNotTrue();
+        var infectedNotProcessed = repository.findAllByProcessStatusNotLike(true);
 
         for (var infected : infectedNotProcessed) {
             infected.setProcessStatus(true);

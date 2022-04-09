@@ -52,7 +52,7 @@ public class SurvivorsService {
     }
 
     public List<Survivors> getAllNonInfectedSurvivors(){
-        return repository.findAllByInfectedIsNotTrue()
+        return repository.findAllByInfectedNotLike(true)
                 .stream()
                 .map(entity -> modelMapper.map(entity, Survivors.class))
                 .collect(Collectors.toList());

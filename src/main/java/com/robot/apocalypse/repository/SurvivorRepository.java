@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface SurvivorRepository extends JpaRepository<SurvivorsEntity, Long> {
     List<SurvivorsEntity> findAllByInfectedIsTrue();
-    List<SurvivorsEntity> findAllByInfectedIsNotTrue();
+    List<SurvivorsEntity> findAllByInfectedNotLike(boolean infected);
     Long countAllByInfectedIsTrue();
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface WitnessRepository extends JpaRepository<WitnessEntity, Long> {
-    List<WitnessEntity> findAllByStatusIsNotTrue();
+    List<WitnessEntity> findAllByProcessStatusNotLike(boolean status);
 }
