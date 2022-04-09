@@ -75,7 +75,7 @@ public class SurvivorsService {
     public Survivors updateSurvivorsLocation(Long survivorId, Double latitude, Double longitude){
         var survivor = getSurvivor(survivorId);
         if(survivor == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Survivor not found!.");
-        
+
         survivor.setLatitude(latitude);
         survivor.setLongitude(longitude);
         return save(survivor);

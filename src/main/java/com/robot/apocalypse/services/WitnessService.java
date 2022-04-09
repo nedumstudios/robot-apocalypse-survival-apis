@@ -30,13 +30,14 @@ public class WitnessService {
 
         for (var infected : infectedNotProcessed) {
             infected.setProcessStatus(true);
+            repository.save(modelMapper.map(infected, WitnessEntity.class));
 
             var survivor = survivorsService.getSurvivor(infected.getInfectedId());
             var witnesses = survivor.getWitnesses();
             witnesses += 1;
             survivor.setWitnesses(witnesses);
 
-            if(survivor.getWitnesses() > 3){
+            if(survivor.getWitnesses() >= 3){
                 survivor.setInfected(true);
             }
             survivorsService.save(survivor);
