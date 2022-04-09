@@ -6,6 +6,6 @@ import lombok.Data;
 public class Inventory {
     private Long id;
     private String itemName;
-    private String quantity;
+    private Integer quantity;
     private Long ownerId;
 }
